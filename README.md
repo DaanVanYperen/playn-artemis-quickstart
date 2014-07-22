@@ -25,7 +25,3 @@ under Apache License 2.0.
 GWT lacks reflection so the build process creates a reflection cache. To use
 ```@Wire``` make sure your components, managers and systems are placed under
 the premade component, manager and system packages.
-
-Artemis does not share libgdx's reflection cache, so if you get gwt reflection
-related errors you might need to add classes to Libgdx's cache manually.
-Artemis reflection cache errors are prefixed with artemis-odb.

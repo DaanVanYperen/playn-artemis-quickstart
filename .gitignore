@@ -1,2 +1,6 @@
 android/assets
 ios/assets
+.idea
+/*.iml
+*.iml
+/android/gen
