@@ -15,30 +15,44 @@
  */
 package playn.sample.hello.core;
 
+import com.artemis.World;
+import com.artemis.managers.GroupManager;
+import com.artemis.managers.TagManager;
+import playn.core.*;
+import playn.sample.hello.core.system.AutoRotateSystem;
+import playn.sample.hello.core.system.RenderSystem;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static playn.core.PlayN.*;
 
-import playn.core.Game;
-import playn.core.GroupLayer;
-import playn.core.Image;
-import playn.core.ImageLayer;
-import playn.core.Pointer;
-
 public class HelloGame extends Game.Default {
 
   GroupLayer peaLayer;
-  List<Pea> peas = new ArrayList<Pea>(0);
+    List<Pea> peas = new ArrayList<Pea>(0);
 
   public static final int UPDATE_RATE = 25;
 
-  public HelloGame() {
+    private World world;
+
+    public HelloGame() {
     super(UPDATE_RATE);
   }
 
   @Override
   public void init() {
+
+    world = new World();
+
+    world.setManager(new GroupManager());
+    world.setManager(new TagManager());
+
+    world.setSystem(new AutoRotateSystem());
+    world.setSystem(new RenderSystem(), true);
+
+    world.initialize();
+
     // create and add background image layer
     Image bgImage = assets().getImage("images/bg.png");
     ImageLayer bgLayer = graphics().createImageLayer(bgImage);
@@ -63,15 +77,12 @@ public class HelloGame extends Game.Default {
 
   @Override
   public void update(int delta) {
-    for (Pea pea : peas) {
-      pea.update(delta);
-    }
+      world.setDelta(delta);
+      world.process();
   }
 
   @Override
   public void paint(float alpha) {
-    for (Pea pea : peas) {
-      pea.paint(alpha);
-    }
+      world.getSystem(RenderSystem.class);
   }
 }
