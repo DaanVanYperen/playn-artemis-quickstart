@@ -18,6 +18,22 @@
       <artifactId>playn-core</artifactId>
       <version>${playn.version}</version>
     </dependency>
+
+      <!-- Support for artemis-odb -->
+      <dependency>
+          <groupId>net.onedaybeard.artemis</groupId>
+          <artifactId>artemis-odb</artifactId>
+          <version>0.6.5</version>
+      </dependency>
+
+      <dependency>
+          <groupId>net.onedaybeard.artemis</groupId>
+          <artifactId>artemis-odb</artifactId>
+          <version>0.6.5</version>
+          <classifier>sources</classifier>
+      </dependency>
+      <!-- / Support for artemis-odb -->
+
   </dependencies>
 
   <build>

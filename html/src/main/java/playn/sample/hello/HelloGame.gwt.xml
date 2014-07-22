@@ -16,6 +16,16 @@
 <module rename-to='hellogame'>
   <inherits name='playn.PlayN'/>
 
+  <!-- Artemis -->
+  <inherits name='com.artemis.backends.artemis_backends_gwt' />
+
+  <!-- Include packages for javascript reflection emulation (@Wire support) -->
+  <extend-configuration-property name="artemis.reflect.include" value="playn.sample.hello.core.component" />
+  <extend-configuration-property name="artemis.reflect.include" value="playn.sample.hello.core.system" />
+  <extend-configuration-property name="artemis.reflect.include" value="playn.sample.hello.core.manager" />
+
+  <!-- / Artemis -->
+
   <!--
     Optionally, enable gwt-log's advanced logging features:
 
