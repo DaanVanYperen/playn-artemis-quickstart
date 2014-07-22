@@ -24,19 +24,28 @@
   <extend-configuration-property name="artemis.reflect.include" value="playn.sample.hello.core.system" />
   <extend-configuration-property name="artemis.reflect.include" value="playn.sample.hello.core.manager" />
 
-  <!-- / Artemis -->
+  <super-source path="emu" />
+
+    <!-- / Artemis -->
 
   <!--
     Optionally, enable gwt-log's advanced logging features:
-
-      <inherits name="playn.logging.Enhanced" />
   -->
+
+  <inherits name="playn.logging.Enhanced" />
+  <set-property name="compiler.emulatedStack" value="true" />
+  <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true"/>
+  <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true"/>
 
   <!-- handles inclusion of our assets -->
   <inherits name='HelloAssets'/>
 
   <source path='core'/>
   <source path='html'/>
+
+    <!-- This can be used to make CssResource produce human-readable CSS -->
+    <define-configuration-property name="CssResource.style" is-multi-valued="false" />
+    <set-configuration-property name="CssResource.style" value="pretty" />
 
   <entry-point class='playn.sample.hello.html.HelloGameHtml'/>
 </module>
