@@ -4,3 +4,4 @@ ios/assets
 /*.iml
 *.iml
 /android/gen
+/html/target
